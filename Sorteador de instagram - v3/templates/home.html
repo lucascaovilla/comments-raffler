@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <center>  
+        <h1>Sorteio do Instagram</h1>
+        <p1>Insira abaixo a url de uma postagem</p1>
+        <body>
+          <form action="/result" method="get">
+            <p><input placeholder='Insira aquia a url de um post' name='url' required></p>
+            <p>Quantos vencedores você deseja?</p>
+            <p>
+              <input type="radio" id="1" name="winners" value="1" required><label for="1">1 vencedor</label>
+              <input type="radio" id="2" name="winners" value="2" required><label for="2">2 vencedores</label>
+              <input type="radio" id="3" name="winners" value="3" required><label for="3">3 vencedores</label>
+            </p>
+            <p>
+              <h3>Caso a publicação informada pertença à uma conta privada:</h3>
+              <p>
+                <label>Informe o usuário da conta que sorteará:</label>
+                <input id="user" name="user" required>
+              </p>
+              <p>
+                <label>Informe a senha da conta que sorteará</label>
+                <input id="pass" name="pass" required>
+              </p>
+            </p>
+            <p><button>Sortear vencedor</button></p>
+          </form>
+        </body>
+        </center>
+    </head>
+</html>
