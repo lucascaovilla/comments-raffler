@@ -31,8 +31,8 @@ input_password = driver.find_element('xpath', '//*[@id="loginForm"]/div/div[2]/d
 button_login = driver.find_element('xpath', '//*[@id="loginForm"]/div/div[3]/button')
 
 #credentials
-username = 'tt8032790'
-password = "VH-rs-yzS('B8ZF"
+username = "" #insert the account username
+password = "" #insert the account password
 
 #do the login
 input_username.send_keys(username)
