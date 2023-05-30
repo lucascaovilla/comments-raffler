@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <center>
+            <h1>Você sorteou {{number}} vencedor(es):</h1>
+        </center>
+    </head>
+    <body>
+        <center>
+            <p>A publicação teve comentários de {{comments}} usuários</p>
+            <h3>
+                {% for winner in result %}
+                    <p>{{winner}}</p>
+                {% endfor %}
+            </h3>
+        </center>
+    </body>
+</html>
