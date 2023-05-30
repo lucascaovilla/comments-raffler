@@ -3,9 +3,9 @@ from selenium.webdriver.chrome.options import Options
 from time import sleep
 from selenium.webdriver.common.by import By
 import random
-from credentials import username, password
 
-def sorteador(url, number):
+
+def sorteador(url, number, username, password):
 
     #define app options
     chrome_options = Options()
@@ -29,8 +29,8 @@ def sorteador(url, number):
     button_login = driver.find_element('xpath', '//*[@id="loginForm"]/div/div[3]/button')
 
     #login
-    input_username.send_keys(username())
-    input_password.send_keys(password())
+    input_username.send_keys(username)
+    input_password.send_keys(password)
     button_login.click()
     sleep(5)
 
@@ -57,8 +57,8 @@ def sorteador(url, number):
     #check if there are more comments
     while True:
         try:
-            driver.find_element('xpath', '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/section/main/div[1]/div[1]/article/div/div[2]/div/div[2]/div[1]/ul/li/div/button').is_displayed()
-            button_more_comments = driver.find_element('xpath', '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/section/main/div[1]/div[1]/article/div/div[2]/div/div[2]/div[1]/ul/li/div/button')
+            driver.find_element('xpath', '/html/body/div[2]/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/section/main/div[1]/div[1]/article/div/div[2]/div/div[2]/div[1]/ul/li/div/button').is_displayed()
+            button_more_comments = driver.find_element('xpath', '/html/body/div[2]/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/section/main/div[1]/div[1]/article/div/div[2]/div/div[2]/div[1]/ul/li/div/button')
             button_more_comments.click()
             sleep(5)
         except:
@@ -66,7 +66,7 @@ def sorteador(url, number):
 
 
     #Findo comments and create a list with the users / remove repeated users
-    comments = driver.find_elements(By.CLASS_NAME, "_a9ym")
+    comments = driver.find_elements(By.CLASS_NAME, "_a9zr")
     list_users = []
     list_checked = []
     for comment in comments:
@@ -79,8 +79,12 @@ def sorteador(url, number):
     #random the winner
     
     list_ch_len = len(list_checked)
-    winners = random.choices(list_checked, k = number)
-    info = [list_ch_len, winners]
-    #end app
-    driver.close()
+    if list_ch_len == 0:
+        driver.close()
+        info = ["Publicação sem comentários", ""]
+    else:
+        winners = random.choices(list_checked, k = number)
+        info = [list_ch_len, winners]
+        #end app
+        driver.close()
     return info

@@ -2,9 +2,9 @@
 ##Sometimes instagram detect bot action in theirs platform and block the account
 
 
-def username():
-    username = 'Username'
-    return username
-def password():
-    password = "Password"
-    return password
+def cred_username():
+    cred_username = 'Username'
+    return cred_username
+def cred_password():
+    cred_password = "Password"
+    return cred_password
